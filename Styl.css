@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  text-align:center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height:10%;
+  background-color:#3ea8cb;
+  color: white;
+  text-align: center;
+  font-size: 55px;
+}
+#LOGO{
+justify-content: center;
+width: 20%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  width: 100%;
+}
+.conteiner_2{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 66%;
+}
+.conteiner_3{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+.map {
+  background: #eee;
+  width: 70%;
+}
+
+.centredtext{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 100%;
+}
+.backcontainer {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.KP {
+  background: #cde;
+  height:100%;
+  width: 100%;
+}
+
+.CME {
+  background: #dec;
+  height:100%;
+  width: 100%;
+}
+
+.footer {
+  background: #3ea8cb;;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;     
+  height:10%;
+  font-size: 30px;
+}
+a{
+  all:unset;
+  cursor: pointer;
+}
+.info {
+	text-decoration: none; 
+  color: inherit;
+  height: 100%;
+}
+.info:hover {
+  background-color:#2b768f;
+}
+.Satelita{
+  height: 100%;
+}
+
+.Satelita:hover {
+  background-color:#2b768f;
+}
+.Alert {
+  height: 100%;
+}
+.Alert:hover {
+  background-color:#2b768f;
+}
+.Container_info {
+  
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: justify;
+}
+.Navigation {
+  width: 20%;
+  min-height: 100vh; 
+  background-color: #3ea8cb  ;
+  color: white;
+  
+}
+.Navigation_2 {
+  top: 0;
+  position: sticky;
+  background-color: #3ea8cb  ;
+  color: white;
+  margin-left:5%;
+  margin-right:5%;
+}
+.Navigation_2 a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.Navigation_2 a:hover{
+  /*color: gray;*/
+  background-color:#2b768f;
+  text-decoration: none; 
+}
+.Tresc {
+  width: 80%;
+  margin-left: 2%;
+  margin-right: 2%;
+  box-sizing: border-box; 
+  overflow-wrap: break-word;
+
+}
+.dodatkowe{
+  height: 90%;
+}
