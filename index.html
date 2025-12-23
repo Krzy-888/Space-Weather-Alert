@@ -1,6 +1,6 @@
 <head>
 <link rel="stylesheet" href="Styl.css">
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <div class="header"><div id="LOGO"><img src="IMAGES/LOGO.png" height="100%"/></div><div class="centredtext">Space Weathe Alert</div></div>
 <div class="container">
@@ -9,12 +9,14 @@
             <div id="CME">
                 <h3>CME</h3>
                 <div id="cme_value">
-                    <img src="IMAGES\Just_CME.png" height="100%" width="auto"/>
-                    <img src="IMAGES\CME_Legend.png" width="auto" height="auto"/>
+                    <img src="IMAGES\CME.png" />
                 </div>
             </div>
             <div class="KP">
-
+                <h3>KP</h3>
+                <div id="kp_value">
+                    <canvas></canvas>
+                </div>
             </div>
         </div>
         <div class="footer">
