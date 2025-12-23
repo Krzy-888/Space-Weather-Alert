@@ -59,12 +59,18 @@ width: 20%;
   width: 100%;
 }
 
-.CME {
+#CME {
+  display: flex;
+  flex-direction: column;
   background: #dec;
   height:100%;
   width: 100%;
 }
-
+#cme_value{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
 .footer {
   background: #3ea8cb;;
   color: white;
