@@ -24,7 +24,7 @@ jobs:
           last_line=$(tail -n 1 kp_raw.txt)
           
           # Wydobądź wartości (YYYY MM DD hh.h Kp)
-          read year month day hour kp ap d <<<"$last_line"
+          read year month day hour hour_m days days_m kp ap d <<<"$last_line"
           
           # Usuń wiodące zera
           month=$((10#$month))
