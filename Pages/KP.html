@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>KP</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body { 
+      font-family: Arial; 
+      text-align: center; 
+      align-content: center;
+      
+    }
+    canvas{
+      margin: auto;
+      max-width: 90%;
+    }
+  </style>
+</head>
+
+<body>
+
+<!--<h2>KP Index Gauge</h2>-->
+<canvas id="kpGauge"></canvas>
+<!--<h3 id="label"></h3>-->
+<script>
+// Kolor wykresu
+function kpColor(kp){
+  if(kp < 3) return "#2ecc71";     // zielony
+  if(kp < 5) return "#f1c40f";     // żółty
+  if(kp < 7) return "#e67e22";     // pomarańcz
+  return "#e74c3c";                // czerwony
+}
+
+  // Ustaw KP tutaj (0–9)
+  let kpValue = 5;
+
+  // przelicznik KP na zakres koła
+  let maxKP = 9;
+  let fill = kpValue;
+  let empty = maxKP - kpValue;
+
+  const ctx = document.getElementById("kpGauge");
+
+  const kpGauge = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      datasets: [{
+        data: [fill, empty],
+        backgroundColor: [kpColor(kpValue), "#e0e0e0"],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      circumference: 180,   // półkole
+      rotation: -90,        // start na dole
+      cutout: "70%",        // grubość pierścienia
+
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false }
+      }
+    }
+  });
+  function setKP(v){
+  kpGauge.data.datasets[0].data = [v, 9-v];
+  kpGauge.data.datasets[0].backgroundColor[0] = kpColor(v);
+  kpGauge.update();
+  document.getElementById("label").innerText = "Aktualny Kp = " + v.toFixed(3);
+}
+
+  async function fetchKP(){
+  const resp = await fetch("kp.json");
+  const data = await resp.json();
+
+  const kp = data.kp;
+  setKP(kp);
+}
+
+//document.getElementById("label").innerText = "KP = " + kpValue;
+</script>
+
+</body>
+</html>
