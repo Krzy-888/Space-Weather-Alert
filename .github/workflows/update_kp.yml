@@ -2,29 +2,44 @@ name: Update KP Data
 
 on:
   schedule:
-    - cron: "*/120 * * * *"  
+    - cron: "*/5 * * * *"  
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Fetch KP file
+      - name: Pobierz dane Kp
         run: |
-          curl -o kp_raw.txt https://kp.gfz.de/app/files/Kp_ap_nowcast.txt
+          curl -s https://kp.gfz.de/app/files/Kp_ap_nowcast.txt -o kp_raw.txt
 
-      - name: Convert latest KP to JSON
+      - name: Przetwórz dane na JSON
         run: |
-          tail -n 1 kp_raw.txt | awk '{
-            printf("{\"year\":%s,\"month\":%s,\"day\":%s,\"hour\":%s,\"kp\":%s}\n",$1,$2,$3,$4,$8)
-          }' > kp.json
+          # Pobierz ostatnią linię z danych
+          last_line=$(tail -n 1 kp_raw.txt)
+          
+          # Wydobądź wartości (YYYY MM DD hh.h Kp)
+          read year month day hour kp ap d <<<"$last_line"
+          
+          # Usuń wiodące zera
+          month=$((10#$month))
+          day=$((10#$day))
+          hour=$(printf "%.1f" $hour)
+          kp=$(printf "%.3f" $kp)
 
-      - name: Commit
+          # Zapisz JSON w Pages/kp.json
+          mkdir -p Pages
+          echo "{\"year\":$year,\"month\":$month,\"day\":$day,\"hour\":$hour,\"kp\":$kp}" > Pages/kp.json
+
+      - name: Commit i push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add kp_raw.txt kp.json
+          git add Pages/kp.json kp_raw.txt
           git commit -m "Update KP data" || echo "No changes"
           git push
