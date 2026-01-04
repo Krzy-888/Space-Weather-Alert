@@ -78,9 +78,11 @@ function kpColor(kp){
 
   const kp = data.kp;
   setKP(kp);
+  document.getElementById("label").innerText = "KP = " + kp;
+  console.log(kp)
 }
 fetchKP()
-document.getElementById("label").innerText = "KP = " + kpValue;
+
 </script>
 
 </body>
