@@ -73,7 +73,7 @@ function kpColor(kp){
 }
 
   async function fetchKP(){
-  const resp = await fetch("kp.json");
+  const resp = await fetch("/kp.json");
   const data = await resp.json();
 
   const kp = data.kp;
