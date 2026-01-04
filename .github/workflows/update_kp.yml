@@ -1,0 +1,30 @@
+name: Update KP Data
+
+on:
+  schedule:
+    - cron: "*/120 * * * *"  
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch KP file
+        run: |
+          curl -o kp_raw.txt https://kp.gfz.de/app/files/Kp_ap_nowcast.txt
+
+      - name: Convert latest KP to JSON
+        run: |
+          tail -n 1 kp_raw.txt | awk '{
+            printf("{\"year\":%s,\"month\":%s,\"day\":%s,\"hour\":%s,\"kp\":%s}\n",$1,$2,$3,$4,$8)
+          }' > kp.json
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add kp_raw.txt kp.json
+          git commit -m "Update KP data" || echo "No changes"
+          git push
