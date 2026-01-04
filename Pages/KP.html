@@ -25,7 +25,7 @@
 
 <!--<h2>KP Index Gauge</h2>-->
 <canvas id="kpGauge"></canvas>
-<!--<h3 id="label"></h3>-->
+<h3 id="label"></h3>
 <script>
 // Kolor wykresu
 function kpColor(kp){
@@ -36,7 +36,7 @@ function kpColor(kp){
 }
 
   // Ustaw KP tutaj (0–9)
-  let kpValue = 5;
+  let kpValue = 0;
 
   // przelicznik KP na zakres koła
   let maxKP = 9;
@@ -79,8 +79,8 @@ function kpColor(kp){
   const kp = data.kp;
   setKP(kp);
 }
-
-//document.getElementById("label").innerText = "KP = " + kpValue;
+fetchKP()
+document.getElementById("label").innerText = "KP = " + kpValue;
 </script>
 
 </body>
