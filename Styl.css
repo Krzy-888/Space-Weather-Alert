@@ -166,8 +166,11 @@ a{
   overflow-wrap: break-word;
 
 }
-.dodatkowe{
-  height: 90%;
+.Dodatkowe{
+  display: grid;
+  grid-template-columns:1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
 }
 /* GRID wesion */
 .container_grid {
@@ -192,6 +195,9 @@ a{
   background-color:#ffffff;
 }
 #Right_win{
+  display: grid;
+  grid-template-columns:1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   margin-right: 0.5%;
   height: 99%;
   background-color:#ffffff;
