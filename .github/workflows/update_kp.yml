@@ -1,0 +1,45 @@
+name: Update KP Data
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Pobierz dane Kp
+        run: |
+          curl -s https://kp.gfz.de/app/files/Kp_ap_nowcast.txt -o kp_raw.txt
+
+      - name: Przetwórz dane na JSON
+        run: |
+          # Pobierz ostatnią linię z danych
+          last_line=$(grep -E '^[0-9]{4}' kp_raw.txt | tail -n 1)
+          
+          # Wydobądź wartości (YYYY MM DD hh.h Kp)
+          read year month day hour hour_m days days_m kp ap d <<<"$last_line"
+          
+          # Usuń wiodące zera
+          month=$((10#$month))
+          day=$((10#$day))
+          hour=$(printf "%.1f" $hour)
+          kp=$(printf "%.3f" $kp)
+
+          # Zapisz JSON w Pages/kp.json
+          mkdir -p Pages
+          echo "{\"year\":$year,\"month\":$month,\"day\":$day,\"hour\":$hour,\"kp\":$kp}" > Pages/kp.json
+
+      - name: Commit i push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add Pages/kp.json kp_raw.txt
+          git commit -m "Update KP data" || echo "No changes"
+          git push
