@@ -21,7 +21,7 @@ jobs:
       - name: Przetwórz dane na JSON
         run: |
           # Pobierz ostatnią linię z danych
-          last_line=$(tail -n 1 kp_raw.txt)
+          last_line=$(grep -E '^[0-9]{4}' kp_raw.txt | tail -n 1)
           
           # Wydobądź wartości (YYYY MM DD hh.h Kp)
           read year month day hour hour_m days days_m kp ap d <<<"$last_line"
