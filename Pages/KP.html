@@ -76,7 +76,10 @@ function kpColor(kp){
   const resp = await fetch("kp.json");
   const data = await resp.json();
 
-  const kp = data.kp;
+  let kp = data.kp;
+  if(kp==-1){
+    kp = 0.3;
+  }
   setKP(kp);
   document.getElementById("label").innerText = "KP = " + kp;
   console.log(kp)
