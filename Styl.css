@@ -232,6 +232,12 @@ background-color:#2b768f;
 #parameters_button:hover{
   background-color:#2b768f;
 }
+iframe{
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
 
 #container_alert{
   background-color:#3ea8cb;
