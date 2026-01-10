@@ -1,0 +1,35 @@
+<html>
+<head>
+<link rel="stylesheet" href="Styl.css">
+<title>Alert</title>
+<style>
+    body { 
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    </style>
+</head>
+<body>
+    <div id="container_alert">
+        
+        <div id="LOGO">
+            <img src="IMAGES/LOGO.png" height="30%"/>
+        </div>
+        <div>
+        <h2 style="text-align: center;">Witaj!</h2>
+        <p>Aby dostawać maile z aktualnymi informacjami na teamat pogody kosmicznej i potencjalnych zagrożeń dla twoich satelitów wypełnij poniższy formulaż.</p>
+        <h2 style="text-align: center;">Formulaż</h2>
+        <form>
+            <label for="e-mail">Email:</label>
+            <input type="email" id="e-mail" name="mail"><br><br>
+            <input type="checkbox" id="warunki" name="warunki" value="tak" required>
+            <label for="warunki">Akceptuje warunki korzystania i politykę prywatności</label><br><br>
+            <input type="submit" value="Zatwierdź">
+        </form>
+        </div>
+    </div>
+</body>
+</html>

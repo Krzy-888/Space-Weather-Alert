@@ -232,3 +232,16 @@ background-color:#2b768f;
 #parameters_button:hover{
   background-color:#2b768f;
 }
+
+#container_alert{
+  background-color:#3ea8cb;
+  color: #ffffff;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 50%;
+  text-align: left;
+  padding: 1em;
+
+}
