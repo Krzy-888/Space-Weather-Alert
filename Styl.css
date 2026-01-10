@@ -195,6 +195,9 @@ a{
   margin-left: 0.5%;
   height: 99%;
   background-color:#ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
 }
 #Right_win{
   display: grid;
@@ -214,6 +217,7 @@ a{
   height: 10%;
   width: 100%;
   align-items: center;
+  justify-content: center;
 }
 .option{
 padding: 1em;
@@ -229,6 +233,7 @@ background-color:#2b768f;
   border: none;
   border-radius: 5px;
 }
+
 #parameters_button:hover{
   background-color:#2b768f;
 }
@@ -238,6 +243,12 @@ iframe{
   width: 100%;
 }
 
+
+.rwin_content{
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
 
 #container_alert{
   background-color:#3ea8cb;
@@ -251,3 +262,4 @@ iframe{
   padding: 1em;
 
 }
+
