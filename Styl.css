@@ -199,7 +199,7 @@ a{
 #Right_win{
   display: grid;
   grid-template-columns:1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   margin-right: 0.5%;
   height: 99%;
   background-color:#ffffff;
@@ -222,8 +222,13 @@ border-radius: 5px;
 .option:hover{
 background-color:#2b768f;
 }
-iframe{
+#parameters_button{
+  background-color:#3ea8cb;
+  color: white;
+  padding: 1em;
   border: none;
-  height: 100%;
-  width: 100%;
+  border-radius: 5px;
+}
+#parameters_button:hover{
+  background-color:#2b768f;
 }

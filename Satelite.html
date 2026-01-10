@@ -13,16 +13,18 @@
         </div>
     </div>
     <div id="Right_win">
+        
         <div id="Height">
+            <h3>Zmiana wysokośći satelity w czasie</h3>
             <iframe src="Pages/Height.html"></iframe>
         </div>
         <div id="Height">
-            lorem ipsum
-            <!-- <iframe src="Pages/DTM.html"></iframe> -->
-        </div>
-        <div id="Height">
-            lorem ipsum
-            <!-- <iframe src="Pages/DTM.html"></iframe> -->
+        <h3>Parametry własnego satelity</h3>
+        <form>
+            <label for="Satelite_H">Wysokość Satelity:</label><br>
+            <input type="number" id="Satelite_H" name="H" value="528">
+        </form>
+        <button id="parameters_button" onclick="location.reload();">Zastosuj parametry</button>
         </div>
     </div>
 </div>
